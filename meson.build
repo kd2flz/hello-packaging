@@ -9,15 +9,15 @@ add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), la
 #Create a new executable, list the files we want to compile, list the dependencies we need.
 executable(
     meson.project_name(),
-    'src'/ b'Application.vala',
+    'src'/ 'Application.vala',
     dependencies: [
-        dependency('gtk+3.0')
+        dependency('gtk+-3.0')
     ],
     install: true
 )
 
 #Translate and install our .desktop file
-i18n.merger_file(
+i18n.merge_file(
     input: 'data' / 'hello-packaging.desktop.in',
     output: meson.project_name() + '.desktop',
     po_dir: meson.source_root() / 'po',
